@@ -273,6 +273,13 @@ getData() {
             KEY_FILE="/etc/v2ray/${DOMAIN}.key"
         else
           #TODO php无法使用 暂时修改
+          resolve=`ping ${DOMAIN} -c 2`
+          res=`echo -n ${resolve} | grep ${IP}`
+          if [[ -z "${res}" ]]; then
+              colorEcho ${BLUE}  "${DOMAIN} 解析结果：${resolve}"
+              colorEcho ${RED}  " 域名未解析到当前服务器IP(${IP})!"
+              exit 1
+          fi
 #            resolve=`curl -sL https://hijk.art/hostip.php?d=${DOMAIN}`
 #            res=`echo -n ${resolve} | grep ${IP}`
 #            if [[ -z "${res}" ]]; then
@@ -2022,7 +2029,8 @@ menu() {
 	colorEcho $RED  "}"
 	colorEcho $RED  "}"	
 	colorEcho $GREEN "----------sspanel节点配置----------------------"
-	colorEcho $RED  "${IP};${V2PORT};0;ws;tls;path=${WSPATH}|server=${IP}|host=${DOMAIN}"	
+#	colorEcho $RED  "${IP};${V2PORT};0;ws;tls;path=${WSPATH}|server=${IP}|host=${DOMAIN}"
+	colorEcho $RED "${IP};0;0;ws;tls;path=${WSPATH}|server=${IP}|host=${DOMAIN}|inside_port=${V2PORT}|outside_port=${PORT}"
 			#soga config force_close_ssl=true
 			#|outside_port=${PORT}
 			# {
