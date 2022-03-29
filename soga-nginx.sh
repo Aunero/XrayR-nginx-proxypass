@@ -274,9 +274,11 @@ getData() {
         else
           #TODO php无法使用 暂时修改
           resolve=`ping ${DOMAIN} -c 2`
-          res=`echo -n ${resolve} | grep ${IP}`
-          if [[ -z "${res}" ]]; then
+          res=$(echo $resolve | grep "${IP}")
+          if [[ "$res" != "" ]];
+          then
               colorEcho ${BLUE}  "${DOMAIN} 解析结果：${resolve}"
+          else
               colorEcho ${RED}  " 域名未解析到当前服务器IP(${IP})!"
               exit 1
           fi
@@ -287,7 +289,7 @@ getData() {
 #                colorEcho ${RED}  " 域名未解析到当前服务器IP(${IP})!"
 #                exit 1
 #            fi
-            colorEcho ${BLUE}  "${DOMAIN} 解析成功!"
+#            colorEcho ${BLUE}  "${DOMAIN} 解析成功!"
         fi
     fi
 
