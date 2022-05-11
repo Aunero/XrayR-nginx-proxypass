@@ -1909,7 +1909,7 @@ menu() {
     echo -e "  ${GREEN}16.${PLAIN}  查看V2ray配置"
     echo -e "  ${GREEN}17.${PLAIN}  查看V2ray日志"
     echo " -------------"
-    echo -e "  ${GREEN}18.${PLAIN}  soga添加nginx反代"
+    echo -e "  ${GREEN}18.${PLAIN}  XrayR添加nginx反代"
     echo " -------------"	
     echo -e "  ${GREEN}0.${PLAIN}   退出"
     echo -n " 当前状态："
@@ -1996,7 +1996,6 @@ menu() {
 		WS="true"
 		TLS="true"
 		getData
-	soga config force_close_ssl=true
     $PMT clean all
     [[ "$PMT" = "apt" ]] && $PMT update
     #echo $CMD_UPGRADE | bash
@@ -2017,7 +2016,7 @@ menu() {
         getCert
     fi
     configNginx
-    soga restart
+    xrayr restart
     service nginx restart
 	colorEcho $RED
 	colorEcho $GREEN "安装完成，v2ray监听端口为${V2PORT} ,nginx监听端口为${PORT}!"
@@ -2032,7 +2031,8 @@ menu() {
 	colorEcho $RED  "}"	
 	colorEcho $GREEN "----------sspanel节点配置----------------------"
 #	colorEcho $RED  "${IP};${V2PORT};0;ws;tls;path=${WSPATH}|server=${IP}|host=${DOMAIN}"
-	colorEcho $RED "${IP};0;0;ws;tls;path=${WSPATH}|server=${IP}|host=${DOMAIN}|inside_port=${V2PORT}|outside_port=${PORT}"
+	colorEcho $RED "${IP};${V2PORT};0;ws;tls;path=${WSPATH}|server=${DOMAIN}|host=${DOMAIN}|enable_vless=true|outside_port=${PORT}"
+	colorEcho $BLUE "请将xrayr配置中的CertMode设置为none"
 			#soga config force_close_ssl=true
 			#|outside_port=${PORT}
 			# {
