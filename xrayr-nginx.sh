@@ -474,8 +474,8 @@ getData() {
     fi
 
     echo ""
-    read -p " 是否安装BBR(默认安装)?[y/n]:" NEED_BBR
-    [[ -z "$NEED_BBR" ]] && NEED_BBR=y
+    read -p " 是否安装BBR(默认不安装)?[y/n]:" NEED_BBR
+    [[ -z "$NEED_BBR" ]] && NEED_BBR=n
     [[ "$NEED_BBR" = "Y" ]] && NEED_BBR=y
     colorEcho $BLUE " 安装BBR：$NEED_BBR"
 }
