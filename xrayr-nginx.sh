@@ -245,9 +245,9 @@ getData() {
     if [[ "$TLS" = "true" || "$XTLS" = "true" ]]; then
         echo ""
         echo " 运行之前请确认如下条件已经具备："
-        colorEcho ${YELLOW} "  1. 一个伪装域名"
-        colorEcho ${YELLOW} "  2. 伪装域名DNS解析指向当前服务器ip（${IP}）"
-        colorEcho ${BLUE} "  3. 如果/root目录下有 v2ray.pem 和 v2ray.key 证书密钥文件，无需理会条件2"
+        colorEcho ${YELLOW} "  1. 一个伪装域名DNS解析指向当前服务器ip（${IP}）"
+        colorEcho ${YELLOW} "  2. XrayR配置中的CertMode设置为none"
+        colorEcho ${BLUE} "  3. 如果/root目录下有 v2ray.pem 和 v2ray.key 证书密钥文件，无需理会条件1"
         echo " "
         read -p " 确认满足按y，按其他退出脚本：" answer
         if [[ "${answer,,}" != "y" ]]; then
@@ -2032,7 +2032,6 @@ menu() {
 	colorEcho $GREEN "----------sspanel节点配置----------------------"
 #	colorEcho $RED  "${IP};${V2PORT};0;ws;tls;path=${WSPATH}|server=${IP}|host=${DOMAIN}"
 	colorEcho $RED "${IP};${V2PORT};0;ws;tls;path=${WSPATH}|server=${DOMAIN}|host=${DOMAIN}|enable_vless=true|outside_port=${PORT}"
-	colorEcho $BLUE "请将xrayr配置中的CertMode设置为none"
 			#soga config force_close_ssl=true
 			#|outside_port=${PORT}
 			# {
