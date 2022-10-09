@@ -406,10 +406,8 @@ getData() {
         echo ""
         colorEcho $BLUE " 请选择伪装站类型:"
         echo "   1) 静态网站(位于/usr/share/nginx/html)"
-        echo "   2) 小说站(随机选择)"
-        echo "   3) 美女站(https://imeizi.me)"
-        echo "   4) 高清壁纸站(https://bing.ioliu.cn/)"
-        echo "   5) 自定义反代站点(需以http或者https开头)"
+        echo "   2) 高清壁纸站(https://bing.ioliu.cn/)"
+        echo "   3) 自定义反代站点(需以http或者https开头)"
         read -p "  请选择伪装网站类型[默认:高清壁纸站]" answer
         if [[ -z "$answer" ]]; then
             PROXY_URL="https://bing.ioliu.cn/"
@@ -418,29 +416,29 @@ getData() {
             1)
                 PROXY_URL=""
                 ;;
-            2)
-                len=${#SITES[@]}
-                ((len--))
-                while true
-                do
-                    index=`shuf -i0-${len} -n1`
-                    PROXY_URL=${SITES[$index]}
-                    host=`echo ${PROXY_URL} | cut -d/ -f3`
-                    ip=`curl -sL https://hijk.art/hostip.php?d=${host}`
-                    res=`echo -n ${ip} | grep ${host}`
-                    if [[ "${res}" = "" ]]; then
-                        echo "$ip $host" >> /etc/hosts
-                        break
-                    fi
-                done
-                ;;
+#            2)
+#                len=${#SITES[@]}
+#                ((len--))
+#                while true
+#                do
+#                    index=`shuf -i0-${len} -n1`
+#                    PROXY_URL=${SITES[$index]}
+#                    host=`echo ${PROXY_URL} | cut -d/ -f3`
+#                    ip=`curl -sL https://hijk.art/hostip.php?d=${host}`
+#                    res=`echo -n ${ip} | grep ${host}`
+#                    if [[ "${res}" = "" ]]; then
+#                        echo "$ip $host" >> /etc/hosts
+#                        break
+#                    fi
+#                done
+#                ;;
+#            3)
+#                PROXY_URL="https://imeizi.me"
+#                ;;
+#            4)
+#                PROXY_URL="https://bing.ioliu.cn/"
+#                ;;
             3)
-                PROXY_URL="https://imeizi.me"
-                ;;
-            4)
-                PROXY_URL="https://bing.ioliu.cn/"
-                ;;
-            5)
                 read -p " 请输入反代站点(以http或者https开头)：" PROXY_URL
                 if [[ -z "$PROXY_URL" ]]; then
                     colorEcho $RED " 请输入反代网站！"
