@@ -244,7 +244,7 @@ archAffix(){
 getData() {
     if [[ "$TLS" = "true" || "$XTLS" = "true" ]]; then
         echo ""
-        echo " V2ray一键脚本，运行之前请确认如下条件已经具备："
+        echo " 运行之前请确认如下条件已经具备："
         colorEcho ${YELLOW} "  1. 一个伪装域名"
         colorEcho ${YELLOW} "  2. 伪装域名DNS解析指向当前服务器ip（${IP}）"
         colorEcho ${BLUE} "  3. 如果/root目录下有 v2ray.pem 和 v2ray.key 证书密钥文件，无需理会条件2"
@@ -1908,9 +1908,7 @@ menu() {
 #    echo " -------------"
 #    echo -e "  ${GREEN}16.${PLAIN}  查看V2ray配置"
 #    echo -e "  ${GREEN}17.${PLAIN}  查看V2ray日志"
-    echo " -------------"
-    echo -e "  ${GREEN}1.${PLAIN}  XrayR添加nginx反代"
-    echo " -------------"	
+    echo -e "  ${GREEN}1.${PLAIN}   为XrayR添加nginx反代"
     echo -e "  ${GREEN}0.${PLAIN}   退出"
 #    echo -n " 当前状态："
 #    statusText
