@@ -1879,41 +1879,41 @@ showLog() {
 
 menu() {
     clear
-    echo "#############################################################"
-    echo -e "#                   ${RED}v2ray一键安装脚本${PLAIN}                      #"
-    echo -e "# ${GREEN}作者${PLAIN}: 网络跳越(hijk)                                      #"
-    echo -e "# ${GREEN}网址${PLAIN}: https://hijk.art                                    #"
-    echo -e "# ${GREEN}论坛${PLAIN}: https://hijk.club                                   #"
-    echo -e "# ${GREEN}TG群${PLAIN}: https://t.me/hijkclub                               #"
-    echo -e "# ${GREEN}Youtube频道${PLAIN}: https://youtube.com/channel/UCYTB--VsObzepVJtc9yvUxQ #"
-    echo "#############################################################"
-
-    echo -e "  ${GREEN}1.${PLAIN}   安装V2ray-VMESS"
-    echo -e "  ${GREEN}2.${PLAIN}   安装V2ray-${BLUE}VMESS+mKCP${PLAIN}"
-    echo -e "  ${GREEN}3.${PLAIN}   安装V2ray-VMESS+TCP+TLS"
-    echo -e "  ${GREEN}4.${PLAIN}   安装V2ray-${BLUE}VMESS+WS+TLS${PLAIN}${RED}(推荐)${PLAIN}"
-    echo -e "  ${GREEN}5.${PLAIN}   安装V2ray-${BLUE}VLESS+mKCP${PLAIN}"
-    echo -e "  ${GREEN}6.${PLAIN}   安装V2ray-VLESS+TCP+TLS"
-    echo -e "  ${GREEN}7.${PLAIN}   安装V2ray-${BLUE}VLESS+WS+TLS${PLAIN}${RED}(可过cdn)${PLAIN}"
-    echo -e "  ${GREEN}8.${PLAIN}   安装V2ray-${BLUE}VLESS+TCP+XTLS${PLAIN}${RED}(推荐)${PLAIN}"
-    echo -e "  ${GREEN}9.${PLAIN}   安装${BLUE}trojan${PLAIN}${RED}(推荐)${PLAIN}"
-    echo -e "  ${GREEN}10.${PLAIN}  安装${BLUE}trojan+XTLS${PLAIN}${RED}(推荐)${PLAIN}"
+#    echo "#############################################################"
+#    echo -e "#                   ${RED}v2ray一键安装脚本${PLAIN}                      #"
+#    echo -e "# ${GREEN}作者${PLAIN}: 网络跳越(hijk)                                      #"
+#    echo -e "# ${GREEN}网址${PLAIN}: https://hijk.art                                    #"
+#    echo -e "# ${GREEN}论坛${PLAIN}: https://hijk.club                                   #"
+#    echo -e "# ${GREEN}TG群${PLAIN}: https://t.me/hijkclub                               #"
+#    echo -e "# ${GREEN}Youtube频道${PLAIN}: https://youtube.com/channel/UCYTB--VsObzepVJtc9yvUxQ #"
+#    echo "#############################################################"
+#
+#    echo -e "  ${GREEN}1.${PLAIN}   安装V2ray-VMESS"
+#    echo -e "  ${GREEN}2.${PLAIN}   安装V2ray-${BLUE}VMESS+mKCP${PLAIN}"
+#    echo -e "  ${GREEN}3.${PLAIN}   安装V2ray-VMESS+TCP+TLS"
+#    echo -e "  ${GREEN}4.${PLAIN}   安装V2ray-${BLUE}VMESS+WS+TLS${PLAIN}${RED}(推荐)${PLAIN}"
+#    echo -e "  ${GREEN}5.${PLAIN}   安装V2ray-${BLUE}VLESS+mKCP${PLAIN}"
+#    echo -e "  ${GREEN}6.${PLAIN}   安装V2ray-VLESS+TCP+TLS"
+#    echo -e "  ${GREEN}7.${PLAIN}   安装V2ray-${BLUE}VLESS+WS+TLS${PLAIN}${RED}(可过cdn)${PLAIN}"
+#    echo -e "  ${GREEN}8.${PLAIN}   安装V2ray-${BLUE}VLESS+TCP+XTLS${PLAIN}${RED}(推荐)${PLAIN}"
+#    echo -e "  ${GREEN}9.${PLAIN}   安装${BLUE}trojan${PLAIN}${RED}(推荐)${PLAIN}"
+#    echo -e "  ${GREEN}10.${PLAIN}  安装${BLUE}trojan+XTLS${PLAIN}${RED}(推荐)${PLAIN}"
+#    echo " -------------"
+#    echo -e "  ${GREEN}11.${PLAIN}  更新V2ray"
+#    echo -e "  ${GREEN}12.  ${RED}卸载V2ray${PLAIN}"
+#    echo " -------------"
+#    echo -e "  ${GREEN}13.${PLAIN}  启动V2ray"
+#    echo -e "  ${GREEN}14.${PLAIN}  重启V2ray"
+#    echo -e "  ${GREEN}15.${PLAIN}  停止V2ray"
+#    echo " -------------"
+#    echo -e "  ${GREEN}16.${PLAIN}  查看V2ray配置"
+#    echo -e "  ${GREEN}17.${PLAIN}  查看V2ray日志"
     echo " -------------"
-    echo -e "  ${GREEN}11.${PLAIN}  更新V2ray"
-    echo -e "  ${GREEN}12.  ${RED}卸载V2ray${PLAIN}"
-    echo " -------------"
-    echo -e "  ${GREEN}13.${PLAIN}  启动V2ray"
-    echo -e "  ${GREEN}14.${PLAIN}  重启V2ray"
-    echo -e "  ${GREEN}15.${PLAIN}  停止V2ray"
-    echo " -------------"
-    echo -e "  ${GREEN}16.${PLAIN}  查看V2ray配置"
-    echo -e "  ${GREEN}17.${PLAIN}  查看V2ray日志"
-    echo " -------------"
-    echo -e "  ${GREEN}18.${PLAIN}  XrayR添加nginx反代"
+    echo -e "  ${GREEN}1.${PLAIN}  XrayR添加nginx反代"
     echo " -------------"	
     echo -e "  ${GREEN}0.${PLAIN}   退出"
-    echo -n " 当前状态："
-    statusText
+#    echo -n " 当前状态："
+#    statusText
     echo 
 
     read -p " 请选择操作[0-18]：" answer
@@ -1921,77 +1921,77 @@ menu() {
         0)
             exit 0
             ;;
+#        1)
+#            install
+#            ;;
+#        2)
+#            KCP="true"
+#            install
+#            ;;
+#        3)
+#            TLS="true"
+#            install
+#            ;;
+#        4)
+#            TLS="true"
+#            WS="true"
+#            install
+#            ;;
+#        5)
+#            VLESS="true"
+#            KCP="true"
+#            install
+#            ;;
+#        6)
+#            VLESS="true"
+#            TLS="true"
+#            install
+#            ;;
+#        7)
+#            VLESS="true"
+#            TLS="true"
+#            WS="true"
+#            install
+#            ;;
+#        8)
+#            VLESS="true"
+#            TLS="true"
+#            XTLS="true"
+#            install
+#            ;;
+#        9)
+#            TROJAN="true"
+#            TLS="true"
+#            install
+#            ;;
+#        10)
+#            TROJAN="true"
+#            TLS="true"
+#            XTLS="true"
+#            install
+#            ;;
+#        11)
+#            update
+#            ;;
+#        12)
+#            uninstall
+#            ;;
+#        13)
+#            start
+#            ;;
+#        14)
+#            restart
+#            ;;
+#        15)
+#            stop
+#            ;;
+#        16)
+#            showInfo
+#            ;;
+#        17)
+#            showLog
+#            ;;
         1)
-            install
-            ;;
-        2)
-            KCP="true"
-            install
-            ;;
-        3)
-            TLS="true"
-            install
-            ;;
-        4)
-            TLS="true"
-            WS="true"
-            install
-            ;;
-        5)
-            VLESS="true"
-            KCP="true"
-            install
-            ;;
-        6)
-            VLESS="true"
-            TLS="true"
-            install
-            ;;
-        7)
-            VLESS="true"
-            TLS="true"
-            WS="true"
-            install
-            ;;
-        8)
-            VLESS="true"
-            TLS="true"
-            XTLS="true"
-            install
-            ;;
-        9)
-            TROJAN="true"
-            TLS="true"
-            install
-            ;;
-        10)
-            TROJAN="true"
-            TLS="true"
-            XTLS="true"
-            install
-            ;;
-        11)
-            update
-            ;;
-        12)
-            uninstall
-            ;;
-        13)
-            start
-            ;;
-        14)
-            restart
-            ;;
-        15)
-            stop
-            ;;
-        16)
-            showInfo
-            ;;
-        17)
-            showLog
-            ;;
-        18)
 		
 		WS="true"
 		TLS="true"
