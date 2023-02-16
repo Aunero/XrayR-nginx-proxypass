@@ -2032,8 +2032,20 @@ menu() {
 	colorEcho $RED  "}"	
 	colorEcho $GREEN "----------sspanel节点配置----------------------"
 	colorEcho $RED "${IP};${V2PORT};0;ws;tls;path=${WSPATH}|server=${DOMAIN}|host=${DOMAIN}|outside_port=${PORT}"
-	colorEcho $GREEN "----------sspanel节点配置(VLESS)---------------"
-  colorEcho $RED "${IP};${V2PORT};0;ws;tls;path=${WSPATH}|server=${DOMAIN}|host=${DOMAIN}|enable_vless=true|outside_port=${PORT}"
+	colorEcho $GREEN "----------sspanel节点配置(custom_config)---------------"
+  colorEcho $RED "{"
+  colorEcho $RED   "\"offset_port_user\": \"${PORT}\","
+  colorEcho $RED   "\"offset_port_node\": \"${V2PORT}\","
+  colorEcho $RED   "\"server_sub\": \"${DOMAIN}\","
+  colorEcho $RED   "\"host\": \"${DOMAIN}\","
+  colorEcho $RED   "\"alter_id\": \"0\","
+  colorEcho $RED   "\"network\": \"ws\","
+  colorEcho $RED   "\"security\": \"tls\","
+  colorEcho $RED   "\"path\": \"/${WSPATH}\","
+  colorEcho $RED   "\"ws-opts\": {"
+  colorEcho $RED     "\"path\": \"/${WSPATH}\""
+  colorEcho $RED   "}"
+  colorEcho $RED "}"
 			#soga config force_close_ssl=true
 			#|outside_port=${PORT}
 			# {
