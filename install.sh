@@ -718,6 +718,16 @@ EOF
     fi
 }
 
+installTemplate() {
+    echo ""
+    colorEcho $BLUE " 安装网页模板..."
+    wget https://raw.githubusercontent.com/Aunero/XrayR-nginx-proxypass/master/html_template.tar
+    tar -xvf html_template.tar
+    mv /usr/share/nginx/html /usr/share/nginx/html_bak
+    mv html_template /usr/share/nginx/html
+    rm -rf html_template.tar
+}
+
 setSelinux() {
     if [[ -s /etc/selinux/config ]] && grep 'SELINUX=enforcing' /etc/selinux/config; then
         sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config
@@ -2015,8 +2025,9 @@ menu() {
         getCert
     fi
     configNginx
+    installTemplate
     # 将XrayR的证书模式配置为none
-    sed -i 's/CertMode: \(file\|http\|dns\)/CertMode: none/g' /etc/XrayR/config.yml
+#    sed -i 's/CertMode: \(file\|http\|dns\)/CertMode: none/g' /etc/XrayR/config.yml
     xrayr restart
     service nginx restart
 	colorEcho $RED
