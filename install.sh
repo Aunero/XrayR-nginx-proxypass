@@ -584,7 +584,7 @@ configNginx() {
     if [[ "$ALLOW_SPIDER" = "n" ]]; then
         echo 'User-Agent: *' > /usr/share/nginx/html/robots.txt
         echo 'Disallow: /' >> /usr/share/nginx/html/robots.txt
-        ROBOT_CONFIG="    location = /robots.txt {}"
+        ROBOT_CONFIG="location = /robots.txt {}"
     else
         ROBOT_CONFIG=""
     fi
@@ -658,7 +658,7 @@ server {
     listen 80;
     listen [::]:80;
     server_name ${DOMAIN};
-    return 301 https://\$server_name:${PORT}\$request_uri;
+    return 301 https://\$server_name\$request_uri;
 }
 
 server {
@@ -668,8 +668,8 @@ server {
     charset utf-8;
 
     # ssl配置
-    ssl_protocols TLSv1.1 TLSv1.2;
-    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+    ssl_protocols TLSv1.3;
+    ssl_ciphers TLS13-AES-256-GCM-SHA384:TLS13-CHACHA20-POLY1305-SHA256:TLS13-AES-128-GCM-SHA256:TLS13-AES-128-CCM-8-SHA256:TLS13-AES-128-CCM-SHA256:EECDH+CHACHA20:EECDH+CHACHA20-draft:EECDH+ECDSA+AES128:EECDH+aRSA+AES128:RSA+AES128:EECDH+ECDSA+AES256:EECDH+aRSA+AES256:RSA+AES256:EECDH+ECDSA+3DES:EECDH+aRSA+3DES:RSA+3DES:!MD5;
     ssl_ecdh_curve secp384r1;
     ssl_prefer_server_ciphers on;
     ssl_session_cache shared:SSL:10m;
@@ -677,6 +677,11 @@ server {
     ssl_session_tickets off;
     ssl_certificate $CERT_FILE;
     ssl_certificate_key $KEY_FILE;
+    # Config for 0-RTT in TLSv1.3
+    ssl_early_data on;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    add_header Strict-Transport-Security "max-age=31536000";
 
     root /usr/share/nginx/html;
     location / {
@@ -686,6 +691,7 @@ server {
 
     location ${WSPATH} {
       proxy_redirect off;
+      proxy_read_timeout 1200s;
       proxy_pass http://127.0.0.1:${V2PORT};
       proxy_http_version 1.1;
       proxy_set_header Upgrade \$http_upgrade;
@@ -694,6 +700,7 @@ server {
       # Show real IP in v2ray access.log
       proxy_set_header X-Real-IP \$remote_addr;
       proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+      proxy_set_header Early-Data \$ssl_early_data;
     }
 }
 EOF
