@@ -2059,9 +2059,9 @@ menu() {
   colorEcho $RED   "\"alter_id\": \"0\","
   colorEcho $RED   "\"network\": \"ws\","
   colorEcho $RED   "\"security\": \"tls\","
-  colorEcho $RED   "\"path\": \"/${WSPATH}\","
+  colorEcho $RED   "\"path\": \"${WSPATH}\","
   colorEcho $RED   "\"ws-opts\": {"
-  colorEcho $RED     "\"path\": \"/${WSPATH}\""
+  colorEcho $RED     "\"path\": \"${WSPATH}\""
   colorEcho $RED   "}"
   colorEcho $RED "}"
 			#soga config force_close_ssl=true
