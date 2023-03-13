@@ -2062,7 +2062,8 @@ menu() {
   colorEcho $RED   "\"path\": \"${WSPATH}\","
   colorEcho $RED   "\"ws-opts\": {"
   colorEcho $RED     "\"path\": \"${WSPATH}\""
-  colorEcho $RED   "}"
+  colorEcho $RED   "},"
+  colorEcho $RED   "\"udp\": false"
   colorEcho $RED "}"
 			#soga config force_close_ssl=true
 			#|outside_port=${PORT}
